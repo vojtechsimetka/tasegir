@@ -105,6 +105,12 @@ module.exports = function (config) {
     singleRun: false,
     concurrency: concurrency,
     browserNoActivityTimeout: timeout,
-    failOnEmptyTestSuite: false
+    failOnEmptyTestSuite: false,
+    sauceLabs: {
+      connectOptions: {
+        verbose: true,
+        verboseDebugging: true
+      }
+    }
   })
 }
