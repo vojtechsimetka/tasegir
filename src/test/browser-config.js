@@ -15,7 +15,7 @@ function getPatterns (ctx) {
 
   return [
     'test/browser.js',
-    'test/**/*.spec.js'
+    'node_modules/aegir/src/config/karma-webpack-bundle.js'
   ]
 }
 
@@ -75,6 +75,9 @@ function getConfig (isWebworker, ctx) {
       },
       junitReporter: {
         outputFile: isWebworker ? 'junit-report-webworker.xml' : 'junit-report-browser.xml'
+      },
+      preprocessors: {
+        'node_modules/aegir/src/config/karma-webpack-bundle.js': ['webpack']
       },
       browserNoActivityTimeout: 50 * 1000,
       customLaunchers: {
