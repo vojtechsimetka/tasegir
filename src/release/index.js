@@ -10,6 +10,7 @@ const docs = require('../docs')
 
 const releaseChecks = require('./prerelease')
 const bump = require('./bump')
+const metadata = require('./metadata')
 const changelog = require('./changelog')
 const commit = require('./commit')
 const contributors = require('./contributors')
@@ -33,6 +34,10 @@ function release (opts) {
     title: 'Bump Version',
     task: bump,
     enabled: (ctx) => ctx.bump
+  }, {
+    title: 'Metadata',
+    task: metadata,
+    enabled: (ctx) => ctx.metadata
   }, {
     title: 'Build',
     task: (ctx) => build(ctx),
