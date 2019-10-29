@@ -114,6 +114,13 @@ To add a CI badge to your README use :
 [![Travis CI](https://flat.badgen.net/travis/auhau/tasegir)](https://travis-ci.com/auhau/tasegir)
 ```
 
+#### Commit linting
+
+Travis does commit linting prior any tests run. The commit's schema is based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+and [commitlint](https://github.com/conventional-changelog/commitlint) implementation.
+
+The support commit types are: *build, chore, ci, docs, feat, fix, improvement, perf, refactor, revert, style, test*
+
 ### Troubleshooting Windows jobs
 
 #### Caches timeout   
