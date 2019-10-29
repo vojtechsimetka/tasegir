@@ -5,6 +5,7 @@ const Listr = require('listr')
 const lint = require('../lint')
 const test = require('../test')
 const build = require('../build')
+const compile = require('../compile')
 const utils = require('../utils')
 const docs = require('../docs')
 
@@ -37,6 +38,10 @@ function release (opts) {
     title: 'Build',
     task: (ctx) => build(ctx),
     enabled: (ctx) => ctx.build
+  }, {
+    title: 'Compile',
+    task: (ctx) => compile(ctx),
+    enabled: (ctx) => ctx.compile
   }, {
     title: 'Update Contributors',
     task: contributors,

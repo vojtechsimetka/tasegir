@@ -1,11 +1,11 @@
 /* eslint-env mocha */
-'use strict'
 
-const sinon = require('sinon')
-const path = require('path')
-const expect = require('chai').expect
+import sinon from 'sinon'
+import path from 'path'
 
-const utils = require('../src/utils')
+import { expect } from 'chai'
+
+import utils from '../src/utils'
 
 describe('utils', () => {
   it('getBasePath', () => {
@@ -16,11 +16,14 @@ describe('utils', () => {
     sinon.stub(process, 'cwd').returns('hello')
 
     expect(utils.getPathToPkg()).to.eql(path.normalize('hello/package.json'))
+    // TODO: Proper TS mocking
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
     process.cwd.restore()
   })
 
   it('getPkg', () => {
-    return utils.getPkg().then((pkg) => {
+    return utils.getPkg().then((pkg: { name: any }) => {
       expect(pkg.name).to.eql('tasegir')
     })
   })

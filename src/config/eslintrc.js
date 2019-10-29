@@ -1,17 +1,22 @@
 'use strict'
 
 module.exports = {
-  extends: 'standard',
-  parserOptions: {
-    sourceType: 'script'
+  extends: [
+    'standard',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  env: {
+    mocha: true,
   },
-  globals: {
-    self: true
+  parserOptions: {
+    sourceType: 'module',
+    ecmaVersion: 2018,
   },
   plugins: [
     'no-only-tests'
   ],
   rules: {
+    'array-bracket-newline': ['error', { 'multiline': true }],
     strict: [2, 'safe'],
     curly: 'error',
     'block-scoped-var': 2,
@@ -40,11 +45,11 @@ module.exports = {
     'require-yield': 2,
     'max-nested-callbacks': [2, 4],
     'max-depth': [2, 4],
-    'valid-jsdoc': [2, {
-      requireReturn: false,
-      requireParamDescription: false,
-      requireReturnDescription: false
-    }],
-    'require-await': 2
+    'require-await': 2,
+    'padding-line-between-statements': [
+      'error',
+      { 'blankLine': 'always', 'prev': '*', 'next': 'if'},
+      { 'blankLine': 'always', 'prev': '*', 'next': 'function'},
+    ]
   }
 }

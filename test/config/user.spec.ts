@@ -1,8 +1,7 @@
 /* eslint-env mocha */
-'use strict'
 
-const expect = require('chai').expect
-const mock = require('mock-require')
+import { expect } from 'chai'
+import mock from 'mock-require'
 
 describe('config - user', () => {
   let config

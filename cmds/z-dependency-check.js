@@ -7,9 +7,9 @@ Supports options forwarding with '--' for more info check https://github.com/max
 `
 const defaultInput = [
   'package.json',
-  './test/**/*.js',
-  './src/**/*.js',
-  '!./test/fixtures/**/*.js'
+  './test/**/*.ts',
+  './src/**/*.ts',
+  '!./test/fixtures/**/*.ts'
 ]
 
 module.exports = {

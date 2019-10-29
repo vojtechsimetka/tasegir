@@ -23,6 +23,11 @@ module.exports = {
       type: 'boolean',
       default: true
     },
+    compile: {
+      describe: 'Run compile task before release',
+      type: 'boolean',
+      default: true
+    },
     test: {
       describe: 'Run test tasks before release',
       type: 'boolean',

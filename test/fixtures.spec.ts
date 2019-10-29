@@ -1,9 +1,8 @@
 /* eslint-env mocha */
-'use strict'
 
-const loadFixture = require('../fixtures')
-const expect = require('chai').expect
-const path = require('path')
+import loadFixture from '../fixtures'
+import { expect } from 'chai'
+import path from 'path'
 
 describe('fixtures', () => {
   it('should load fixtures from dependencies', () => {

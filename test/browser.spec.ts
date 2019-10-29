@@ -1,8 +1,7 @@
 /* eslint-env mocha */
-'use strict'
 
-const loadFixture = require('../fixtures')
-const expect = require('chai').expect
+import loadFixture from '../fixtures'
+import { expect } from 'chai'
 
 describe('browser', () => {
   it('fixtures', () => {

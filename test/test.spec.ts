@@ -1,7 +1,6 @@
 /* eslint-env mocha */
-'use strict'
 
-const expect = require('chai').expect
+import { expect } from 'chai'
 
 describe('test', () => {
   describe('node', () => {
@@ -27,6 +26,7 @@ describe('test', () => {
     it('retries failing tests', function () {
       this.retries(4)
       count = count + 1
+
       if (count === 2) {
         expect(true).to.eql(true)
       } else {

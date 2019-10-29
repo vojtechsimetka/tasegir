@@ -58,7 +58,7 @@ function writeMdDocs (output) {
 function build (ctx) {
   return utils.getPkg()
     .then((pkg) => {
-      const files = './src/index.js'
+      const files = './src/index.ts'
 
       return Promise.all(ctx.docsFormats.map((fmt) => {
         if (fmt === 'md') {

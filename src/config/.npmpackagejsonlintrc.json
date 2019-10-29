@@ -28,6 +28,7 @@
       "require-publishConfig": "off",
       "require-repository": "error",
       "require-scripts": "error",
+      "require-types": "error",
       "require-version": "error",
       "bin-type": "error",
       "files-type": "error",

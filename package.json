@@ -30,22 +30,24 @@
   "scripts": {
     "lint": "node cli.js lint",
     "test:node": "cross-env TASEGIR_TEST=hello node cli.js test -t node --files 'test/**/*.spec.js'",
-    "test:browser": "cross-env TASEGIR_TEST=hello node cli.js test -t browser webworker --files test/browser.spec.js",
+    "test:browser": "cross-env TASEGIR_TEST=hello node cli.js test -t browser webworker --files test/browser.spec.ts",
     "test:acceptance": "./test/acceptance.sh",
     "test": "npm run test:node && npm run test:browser",
     "coverage": "cross-env TASEGIR_TEST=hello node cli.js coverage -t node",
     "watch": "cross-env TASEGIR_TEST=hello node cli.js test -t node --watch",
-    "release": "npm run test && node cli.js release --no-build --no-test",
+    "release": "npm run test && node cli.js release --no-build --no-test --no-compile",
     "release-minor": "npm run test && node cli.js release --no-build --no-test --type minor",
     "release-major": "npm run test && node cli.js release --no-build --no-test --type major"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-transform-regenerator": "^7.4.5",
     "@babel/plugin-transform-runtime": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
-    "@babel/register": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
     "@babel/runtime": "^7.6.0",
     "@commitlint/cli": "^8.3.3",
     "@commitlint/config-conventional": "^8.3.3",
@@ -54,10 +56,11 @@
     "@commitlint/read": "^8.3.2",
     "@commitlint/travis-cli": "^8.3.3",
     "@hapi/joi": "^15.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
     "arrify": "^2.0.1",
     "async": "^2.6.1",
     "babel-loader": "^8.0.5",
-    "babel-plugin-transform-flow-comments": "^6.22.0",
     "browserify-zlib": "~0.2.0",
     "bundlesize": "~0.18.0",
     "chalk": "^2.4.1",
@@ -120,6 +123,9 @@
     "terser-webpack-plugin": "^2.0.1",
     "through": "^2.3.8",
     "transform-loader": "~0.2.4",
+    "ts-node": "^8.4.1",
+    "ts-node-dev": "^1.0.0-pre.43",
+    "typescript": "^3.6.4",
     "update-notifier": "^3.0.1",
     "vinyl-fs": "^3.0.3",
     "webpack": "^4.40.2",
@@ -130,14 +136,14 @@
     "yargs-parser": "^14.0.0"
   },
   "devDependencies": {
+    "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
     "cross-env": "^6.0.0",
-    "mock-require": "^3.0.2",
-    "sinon": "^7.4.2"
+    "mock-require": "^3.0.2"
   },
   "engines": {
-    "node": ">=8.0.0",
-    "npm": ">=5.0.0"
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
   "browserslist": [
     ">1%",

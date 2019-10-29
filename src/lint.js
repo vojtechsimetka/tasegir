@@ -7,13 +7,13 @@ const userConfig = require('./config/user')
 const formatter = CLIEngine.getFormatter()
 
 const FILES = [
-  '*.js',
+  '*.ts',
   'bin/**',
-  'config/**/*.js',
-  'test/**/*.js',
-  'src/**/*.js',
-  'tasks/**/*.js',
-  'benchmarks/**/*.js',
+  'config/**/*.ts',
+  'test/**/*.ts',
+  'src/**/*.ts',
+  'tasks/**/*.ts',
+  'benchmarks/**/*.ts',
   '!**/node_modules/**'
 ]
 

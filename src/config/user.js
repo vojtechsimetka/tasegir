@@ -75,7 +75,8 @@ function userConfig () {
     webpack: {},
     karma: {},
     hooks: {},
-    entry: utils.fromRoot('src', 'index.js'),
+    tsconfig: {},
+    entry: utils.fromRoot('src', 'index.ts'),
     bundlesize: {
       path: './dist/index.min.js',
       maxSize: '100kB'

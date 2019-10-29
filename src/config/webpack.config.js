@@ -38,7 +38,7 @@ const base = (env, argv) => {
         {
           oneOf: [
             {
-              test: /\.js$/,
+              test: /\.(ts|js)$/,
               include: fromRoot(paths.src),
               use: {
                 loader: require.resolve('babel-loader'),
@@ -50,7 +50,7 @@ const base = (env, argv) => {
               }
             },
             {
-              test: /\.js$/,
+              test: /\.(ts|js)$/,
               exclude: /@babel(?:\/|\\{1,2})runtime/,
               use: {
                 loader: require.resolve('babel-loader'),

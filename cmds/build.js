@@ -3,6 +3,7 @@ const EPILOG = `
 This command outputs two bundles, one in development mode (index.js) and another in production mode (index.min.js) plus respective source-maps, files are written to ./dist folder.
 Supports options forwarding with '--' for more info check https://webpack.js.org/api/cli/
 `
+
 module.exports = {
   command: 'build',
   desc: 'Builds browser bundles with Webpack.',

@@ -27,6 +27,10 @@ const karmaWebpackConfig = merge(webpackConfig({ production: isProduction }), {
   output: {
     libraryTarget: 'var'
   },
+  resolve: {
+    extensions: ['.ts', '.js'],
+    modules: ['../node_modules']
+  },
   plugins: [
     new webpack.DefinePlugin(env)
   ]

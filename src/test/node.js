@@ -2,27 +2,34 @@
 
 const execa = require('execa')
 const path = require('path')
-const { fromTasegir, hook } = require('../utils')
+const fs = require('fs-extra')
+const { hook, fromTasegir } = require('../utils')
+const userConfig = require('../config/user')
 
 const DEFAULT_TIMEOUT = global.DEFAULT_TIMEOUT || 5 * 1000
 
 function testNode (ctx) {
   let exec = 'mocha'
+  const defaultOptions = fs.readJsonSync(fromTasegir('src', 'config', 'tsconfig.json')).compilerOptions
+  const compilerOptions = Object.assign(defaultOptions, userConfig().tsconfig)
+
   const env = {
     NODE_ENV: 'test',
-    TASEGIR_RUNNER: 'node'
+    TASEGIR_RUNNER: 'node',
+    TS_NODE_COMPILER_OPTIONS: JSON.stringify(compilerOptions)
   }
   const timeout = ctx.timeout || DEFAULT_TIMEOUT
 
   let args = [
+    '--require', 'ts-node/register',
     ctx.progress && '--reporter=progress',
     '--ui', 'bdd',
     '--timeout', timeout
   ].filter(Boolean)
 
   let files = [
-    'test/node.js',
-    'test/**/*.spec.js'
+    'test/node.ts',
+    'test/**/*.spec.ts'
   ]
 
   if (ctx.colors) {
@@ -53,10 +60,6 @@ function testNode (ctx) {
 
   if (ctx.bail) {
     args.push('--bail')
-  }
-
-  if (ctx.flow) {
-    args.push(...['--resolve', fromTasegir('src/test/register.js')])
   }
 
   const postHook = hook('node', 'post')
