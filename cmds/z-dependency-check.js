@@ -15,11 +15,11 @@ const defaultInput = [
 module.exports = {
   command: 'dependency-check',
   aliases: ['dep-check', 'dep'],
-  desc: 'Run `dependency-check` cli with aegir defaults.',
+  desc: 'Run `dependency-check` cli with tasegir defaults.',
   builder: (yargs) => {
     yargs
       .epilog(EPILOG)
-      .example('aegir dependency-check -- --unused', 'To check unused packages in your repo.')
+      .example('tasegir dependency-check -- --unused', 'To check unused packages in your repo.')
   },
   handler (argv) {
     const input = argv._.slice(1)

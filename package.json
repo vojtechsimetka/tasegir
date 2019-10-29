@@ -1,17 +1,18 @@
 {
-  "name": "aegir",
+  "name": "tasegir",
   "version": "20.4.1",
-  "description": "JavaScript project management",
+  "description": "TypeScript JavaScript project management",
   "keywords": [
     "webpack",
     "standard",
     "lint",
+    "typescript",
     "build"
   ],
-  "homepage": "https://github.com/ipfs/aegir",
-  "bugs": "https://github.com/ipfs/aegir/issues",
+  "homepage": "https://github.com/auhau/tasegir",
+  "bugs": "https://github.com/ipfs/auhau/tasegir",
   "license": "MIT",
-  "leadMaintainer": "Hugo Dias <hugomrdias@gmail.com>",
+  "leadMaintainer": "Adam Uhlíř <adam@uhlir.dev>",
   "files": [
     "cmds",
     "src",
@@ -23,17 +24,17 @@
     "fs": false
   },
   "bin": {
-    "aegir": "cli.js"
+    "tasegir": "cli.js"
   },
-  "repository": "github:ipfs/aegir",
+  "repository": "github:auhau/tasegir",
   "scripts": {
     "lint": "node cli.js lint",
-    "test:node": "cross-env AEGIR_TEST=hello node cli.js test -t node --files 'test/**/*.spec.js'",
-    "test:browser": "cross-env AEGIR_TEST=hello node cli.js test -t browser webworker --files test/browser.spec.js",
+    "test:node": "cross-env TASEGIR_TEST=hello node cli.js test -t node --files 'test/**/*.spec.js'",
+    "test:browser": "cross-env TASEGIR_TEST=hello node cli.js test -t browser webworker --files test/browser.spec.js",
     "test:acceptance": "./test/acceptance.sh",
     "test": "npm run test:node && npm run test:browser",
-    "coverage": "cross-env AEGIR_TEST=hello node cli.js coverage -t node",
-    "watch": "cross-env AEGIR_TEST=hello node cli.js test -t node --watch",
+    "coverage": "cross-env TASEGIR_TEST=hello node cli.js coverage -t node",
+    "watch": "cross-env TASEGIR_TEST=hello node cli.js test -t node --watch",
     "release": "npm run test && node cli.js release --no-build --no-test",
     "release-minor": "npm run test && node cli.js release --no-build --no-test --type minor",
     "release-major": "npm run test && node cli.js release --no-build --no-test --type major"

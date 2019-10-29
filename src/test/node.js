@@ -2,7 +2,7 @@
 
 const execa = require('execa')
 const path = require('path')
-const { fromAegir, hook } = require('../utils')
+const { fromTasegir, hook } = require('../utils')
 
 const DEFAULT_TIMEOUT = global.DEFAULT_TIMEOUT || 5 * 1000
 
@@ -10,7 +10,7 @@ function testNode (ctx) {
   let exec = 'mocha'
   const env = {
     NODE_ENV: 'test',
-    AEGIR_RUNNER: 'node'
+    TASEGIR_RUNNER: 'node'
   }
   const timeout = ctx.timeout || DEFAULT_TIMEOUT
 
@@ -56,7 +56,7 @@ function testNode (ctx) {
   }
 
   if (ctx.flow) {
-    args.push(...['--resolve', fromAegir('src/test/register.js')])
+    args.push(...['--resolve', fromTasegir('src/test/register.js')])
   }
 
   const postHook = hook('node', 'post')

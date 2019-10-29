@@ -3,7 +3,7 @@
 const resolveBin = require('resolve-bin')
 const execa = require('execa')
 const path = require('path')
-const { fromAegir, fromRoot } = require('../src/utils')
+const { fromTasegir, fromRoot } = require('../src/utils')
 
 const bin = resolveBin.sync('npm-package-json-lint', { executable: 'npmPkgJsonLint' })
 
@@ -13,7 +13,7 @@ Supports options forwarding with '--' for more info check https://github.com/tcl
 
 module.exports = {
   command: 'lint-package-json',
-  desc: 'Lint package.json with aegir defaults.',
+  desc: 'Lint package.json with tasegir defaults.',
   aliases: ['lint-package', 'lpj'],
   builder: (yargs) => {
     yargs
@@ -24,7 +24,7 @@ module.exports = {
     const forwardOptions = argv['--'] ? argv['--'] : []
     const useBuiltinConfig = !forwardOptions.includes('--configFile')
     const config = useBuiltinConfig
-      ? ['-c', fromAegir('src/config/.npmpackagejsonlintrc.json')]
+      ? ['-c', fromTasegir('src/config/.npmpackagejsonlintrc.json')]
       : []
 
     return execa(bin, [

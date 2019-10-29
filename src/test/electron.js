@@ -33,7 +33,7 @@ module.exports = (argv) => {
         localDir: path.join(__dirname, '../..'),
         stdio: 'inherit',
         env: {
-          AEGIR_RUNNER: argv.renderer ? 'electron-renderer' : 'electron-main'
+          TASEGIR_RUNNER: argv.renderer ? 'electron-renderer' : 'electron-main'
         }
       })
     })

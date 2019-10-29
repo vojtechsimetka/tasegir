@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 'use strict'
 
-const loadFixture = require('aegir/fixtures')
+const loadFixture = require('tasegir/fixtures')
 const expect = require('chai').expect
 
 describe('fixtures (require.resolve)', () => {

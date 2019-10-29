@@ -11,7 +11,7 @@ function validGh (opts) {
 
   if (!opts.ghtoken) {
     return Promise.reject(new Error('Missing GitHub access token. ' +
-                                    'Have you set `AEGIR_GHTOKEN`?'))
+                                    'Have you set `TASEGIR_GHTOKEN`?'))
   }
   return Promise.resolve()
 }

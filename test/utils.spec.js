@@ -21,7 +21,7 @@ describe('utils', () => {
 
   it('getPkg', () => {
     return utils.getPkg().then((pkg) => {
-      expect(pkg.name).to.eql('aegir')
+      expect(pkg.name).to.eql('tasegir')
     })
   })
 
@@ -30,11 +30,11 @@ describe('utils', () => {
   })
 
   it('getUserConfigPath', () => {
-    expect(utils.getUserConfigPath()).to.match(/.aegir.js$/)
+    expect(utils.getUserConfigPath()).to.match(/.tasegir.js$/)
   })
 
   it('getUserConfig', () => {
-    sinon.stub(utils, 'getUserConfigPath').returns(path.join(__dirname, 'fixtures/.aegir.js'))
+    sinon.stub(utils, 'getUserConfigPath').returns(path.join(__dirname, 'fixtures/.tasegir.js'))
     expect(utils.getUserConfig()).to.eql({ config: 'mine' })
   })
 
@@ -55,13 +55,13 @@ describe('utils', () => {
   })
 
   it('getEnv', () => {
-    process.env.AEGIR_TEST = 'hello'
+    process.env.TASEGIR_TEST = 'hello'
 
     const env = utils.getEnv()
     expect(env.raw.NODE_ENV).to.eql('test')
-    expect(env.raw.AEGIR_TEST).to.eql('hello')
+    expect(env.raw.TASEGIR_TEST).to.eql('hello')
     expect(env.stringified['process.env'].NODE_ENV).to.eql('"test"')
-    expect(env.stringified['process.env'].AEGIR_TEST).to.eql('"hello"')
+    expect(env.stringified['process.env'].TASEGIR_TEST).to.eql('"hello"')
 
     process.env.NODE_ENV = ''
     expect(utils.getEnv('production').raw).to.have.property('NODE_ENV', 'production')

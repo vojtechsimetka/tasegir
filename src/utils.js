@@ -1,7 +1,7 @@
 /**
  * Various utility methods used in AEgir.
  *
- * @module aegir/utils
+ * @module tasegir/utils
  */
 'use strict'
 
@@ -27,15 +27,15 @@ exports.paths = {
 }
 exports.pkg = pkg
 exports.hasPkgProp = props => arrify(props).some(prop => _.has(pkg, prop))
-// TODO: get this from aegir package.json
+// TODO: get this from tasegir package.json
 exports.browserslist = '>1% or node >=10 and not ie 11 and not dead'
 
 exports.repoDirectory = path.dirname(pkgPath)
 exports.fromRoot = (...p) => path.join(exports.repoDirectory, ...p)
 exports.hasFile = (...p) => fs.existsSync(exports.fromRoot(...p))
-exports.fromAegir = (...p) => path.join(__dirname, '..', ...p)
+exports.fromTasegir = (...p) => path.join(__dirname, '..', ...p)
 /**
- * Gets the top level path of the project aegir is executed in.
+ * Gets the top level path of the project tasegir is executed in.
  *
  * @returns {string}
  */
@@ -68,7 +68,7 @@ exports.getPathToDist = () => {
  * @returns {string}
  */
 exports.getUserConfigPath = () => {
-  return findUp('.aegir.js')
+  return findUp('.tasegir.js')
 }
 
 /**
@@ -98,7 +98,7 @@ exports.getLibraryName = (name) => {
 }
 
 /**
- * Get the absolute path to `node_modules` for aegir itself
+ * Get the absolute path to `node_modules` for tasegir itself
  *
  * @returns {string}
  */
@@ -125,7 +125,7 @@ exports.getListrConfig = () => {
  * @returns {Object}
  */
 exports.getEnv = (env) => {
-  const PREFIX = /^AEGIR_/i
+  const PREFIX = /^TASEGIR_/i
   let NODE_ENV = env || 'development'
   if (JSON.stringify(process.env.NODE_ENV) !== JSON.stringify(undefined) && process.env.NODE_ENV) {
     NODE_ENV = process.env.NODE_ENV
@@ -134,7 +134,7 @@ exports.getEnv = (env) => {
   const raw = Object.keys(process.env)
     .filter((key) => PREFIX.test(key))
     .reduce((env, key) => {
-      if (key === 'AEGIR_GHTOKEN') {
+      if (key === 'TASEGIR_GHTOKEN') {
         return env
       } else {
         env[key] = process.env[key]

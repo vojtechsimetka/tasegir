@@ -10,11 +10,11 @@ Supports options forwarding with '--' for more info check https://conventional-c
 module.exports = {
   command: 'commitlint',
   aliases: ['cl', 'commit'],
-  desc: 'Run `commitlint` cli with aegir defaults.',
+  desc: 'Run `commitlint` cli with tasegir defaults.',
   builder: (yargs) => {
     yargs
       .epilog(EPILOG)
-      .example('npx aegir commitlint -- -E HUSKY_GIT_PARAMS', 'To use inside a package.json as a Husky commit-msg hook.')
+      .example('npx tasegir commitlint -- -E HUSKY_GIT_PARAMS', 'To use inside a package.json as a Husky commit-msg hook.')
       .options({
         travis: {
           describe: 'Run `commitlint` in Travis CI mode.',

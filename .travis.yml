@@ -24,7 +24,7 @@ jobs:
     - stage: check
       script:
         - node cli.js commitlint --travis
-        - node cli.js dep-check -- -i aegir
+        - node cli.js dep-check -- -i tasegir
         - npm run lint
 
     - stage: test

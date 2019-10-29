@@ -141,7 +141,7 @@ module.exports = (env, argv) => {
     ? userConfig.webpack(env, argv)
     : userConfig.webpack
 
-  if (process.env.AEGIR_BUILD_ANALYZE) {
+  if (process.env.TASEGIR_BUILD_ANALYZE) {
     return merge(
       base(env, argv),
       {

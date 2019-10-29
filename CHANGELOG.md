@@ -1110,7 +1110,7 @@ carefully when upgrading.
 
 ### Features
 
-* custom .aegir.js config ([26ffbbd](https://github.com/ipfs/aegir/commit/26ffbbd))
+* custom .tasegir.js config ([26ffbbd](https://github.com/ipfs/aegir/commit/26ffbbd))
 
 
 

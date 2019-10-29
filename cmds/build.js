@@ -19,7 +19,7 @@ module.exports = {
         bundlesize: {
           alias: 'b',
           type: 'boolean',
-          describe: 'Checks your bundle size. Default threshold is 100kB, you can override that in `.aegir.js` with the property `bundlesize`.',
+          describe: 'Checks your bundle size. Default threshold is 100kB, you can override that in `.tasegir.js` with the property `bundlesize`.',
           default: false
         }
       })

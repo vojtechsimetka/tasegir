@@ -7,7 +7,7 @@ const validateBoolOption = (name, value, defaultValue) => {
   }
 
   if (typeof value !== 'boolean') {
-    throw new Error(`Preset aegir: '${name}' option must be a boolean.`)
+    throw new Error(`Preset tasegir: '${name}' option must be a boolean.`)
   }
 
   return value

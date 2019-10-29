@@ -37,7 +37,7 @@ describe('config - user', () => {
         return 'dist'
       },
       getPathToNodeModules () {
-        return 'aegir/node_modules'
+        return 'tasegir/node_modules'
       },
       fromRoot () {
         return './src/index.js'
@@ -105,7 +105,7 @@ describe('config - user with async hooks', () => {
         return 'dist'
       },
       getPathToNodeModules () {
-        return 'aegir/node_modules'
+        return 'tasegir/node_modules'
       },
       fromRoot () {
         return './src/index.js'

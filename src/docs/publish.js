@@ -11,7 +11,7 @@ function publish (ctx) {
   return utils.getPkg().then((pkg) => {
     return pify(ghPages.publish.bind(ghPages))('docs', {
       message: 'chore: update documentation',
-      clone: path.join(os.tmpdir(), 'aegir-gh-pages-cache', pkg.name)
+      clone: path.join(os.tmpdir(), 'tasegir-gh-pages-cache', pkg.name)
     })
   })
 }

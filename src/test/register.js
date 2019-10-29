@@ -1,6 +1,6 @@
 'use strict'
-const { fromAegir } = require('./../utils')
+const { fromTasegir } = require('./../utils')
 
 require('@babel/register')({
-  presets: [fromAegir('src/config/babelrc.js')]
+  presets: [fromTasegir('src/config/babelrc.js')]
 })

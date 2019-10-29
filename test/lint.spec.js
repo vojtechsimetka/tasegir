@@ -57,7 +57,7 @@ describe('lint', () => {
     del(TEMP_FOLDER)
   })
 
-  it('lint itself (aegir)', function () {
+  it('lint itself (tasegir)', function () {
     this.timeout(20 * 1000) // slow ci is slow
     return lint({ fix: false })
   })
@@ -153,7 +153,7 @@ describe('lint', () => {
         fs.mkdirSync(dir)
         fs.writeFileSync(`${dir}/test.js`, '\'use strict\'\n\nmodule.exports = {}\n')
         fs.writeFileSync(
-          '.aegir.js',
+          '.tasegir.js',
           `module.exports = { lint: { files: ['${dir}/*.js'] } }`
         )
       })
@@ -169,7 +169,7 @@ describe('lint', () => {
         fs.mkdirSync(dir)
         fs.writeFileSync(`${dir}/test.js`, '() .> {')
         fs.writeFileSync(
-          '.aegir.js',
+          '.tasegir.js',
           `module.exports = { lint: { files: ['${dir}/*.js'] } }`
         )
       })

@@ -1,13 +1,13 @@
 #! /usr/bin/env bash
 
-# Acceptance test for making sure aegir works as we want it to
+# Acceptance test for making sure tasegir works as we want it to
 
 set -e
 
 # Debug
 # set -x
 
-echo "## Creating a link to current AEgir"
+echo "## Creating a link to current tAsEgir"
 npm link
 
 echo "## Creating test directory"
@@ -24,7 +24,7 @@ echo "## Installing dependencies for aegir-test-repo"
 npm install
 
 echo "## Linking current AEgir into aegir-test-repo"
-npm link aegir
+npm link tasegir
 
 echo "## Running build command"
 npm run build

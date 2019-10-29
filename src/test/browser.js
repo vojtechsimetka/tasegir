@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const execa = require('execa')
-const { hook, fromAegir } = require('../utils')
+const { hook, fromTasegir } = require('../utils')
 
 module.exports = (argv) => {
   const input = argv._.slice(1)
@@ -18,7 +18,7 @@ module.exports = (argv) => {
     .then(() => {
       return execa('karma', [
         'start',
-        fromAegir('src/config/karma.conf.js'),
+        fromTasegir('src/config/karma.conf.js'),
         ...watch,
         ...files,
         ...verbose,
@@ -31,7 +31,7 @@ module.exports = (argv) => {
       ], {
         env: {
           NODE_ENV: process.env.NODE_ENV || 'test',
-          AEGIR_RUNNER: argv.webworker ? 'webworker' : 'browser'
+          TASEGIR_RUNNER: argv.webworker ? 'webworker' : 'browser'
         },
         localDir: path.join(__dirname, '../..'),
         stdio: 'inherit'

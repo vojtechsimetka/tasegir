@@ -7,11 +7,11 @@ const { fromRoot, hasFile } = require('../utils')
 const userConfig = require('./user')()
 
 const isProduction = process.env.NODE_ENV === 'production'
-const isWebworker = process.env.AEGIR_RUNNER === 'webworker'
+const isWebworker = process.env.TASEGIR_RUNNER === 'webworker'
 
 // Env to pass in the bundle with DefinePlugin
 const env = {
-  'process.env.AEGIR_RUNNER': JSON.stringify(process.env.AEGIR_RUNNER),
+  'process.env.TASEGIR_RUNNER': JSON.stringify(process.env.TASEGIR_RUNNER),
   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   'process.env.IS_WEBPACK_BUILD': JSON.stringify(true),
   TEST_DIR: JSON.stringify(fromRoot('test')),

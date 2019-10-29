@@ -66,7 +66,7 @@ async function publishRc (opts) {
     publish: true,
     ghrelease: true,
     docs: true,
-    ghtoken: opts.ghtoken || process.env.AEGIR_GHTOKEN
+    ghtoken: opts.ghtoken || process.env.TASEGIR_GHTOKEN
   })
 }
 
