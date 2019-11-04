@@ -2,6 +2,7 @@
 
 [![Travis CI](https://flat.badgen.net/travis/auhau/tasegir)](https://travis-ci.com/auhau/tasegir)
 [![Dependency Status](https://david-dm.org/auhau/tasegir.svg?style=flat-square)](https://david-dm.org/auhau/tasegir)
+[![Managed by tAsEgir](https://img.shields.io/badge/%20managed%20by-tasegir-blue)](https://github.com/auhau/tasegir)
 
 > Automated TypeScript project management.
 
