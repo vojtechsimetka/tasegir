@@ -2,18 +2,26 @@
 
 const git = require('simple-git')(process.cwd())
 const pify = require('pify')
+const inquirer = require('inquirer')
+
+const GHTOKEN_QUESTION = [
+  {
+    type: 'password',
+    message: 'Enter a GitHub personal access token',
+    name: 'ghtoken',
+    mask: '*',
+    validate: (token) => token.match(/^[a-z0-9]{40}$/) !== null
+  }
+]
 
 // Check if there are valid GitHub credentials for publishing this module
-function validGh (opts) {
-  if (!opts.ghrelease) {
-    return Promise.resolve(true)
+async function validGh (opts) {
+  if (!opts.ghrelease || opts.ghtoken) {
+    return opts
   }
 
-  if (!opts.ghtoken) {
-    return Promise.reject(new Error('Missing GitHub access token. ' +
-                                    'Have you set `TASEGIR_GHTOKEN`?'))
-  }
-  return Promise.resolve()
+  opts.ghtoken = (await inquirer.prompt(GHTOKEN_QUESTION))['ghtoken']
+  return opts
 }
 
 // Is the current git workspace dirty?
@@ -29,11 +37,9 @@ function isDirty () {
 // Validate that all requirements are met before starting the release
 // - No dirty git
 // - github token for github release, if github release is enabled
-function prerelease (opts) {
-  return Promise.all([
-    isDirty(),
-    validGh(opts)
-  ])
+async function prerelease (opts) {
+  await isDirty()
+  return validGh(opts)
 }
 
 module.exports = prerelease

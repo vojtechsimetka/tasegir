@@ -6,7 +6,7 @@
 
 > Automated TypeScript project management.
 
-*Fork of [aegir](https://github.com/ipfs/aegir) specializing on TypeScript projects.* 
+*Fork of [aegir](https://github.com/ipfs/aegir) specializing on TypeScript projects. Thanks [Protocol Labs](https://protocol.ai/) for all the work!* 
 
 ## Lead Maintainer
 

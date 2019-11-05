@@ -70,7 +70,7 @@ function release (opts) {
     enabled: (ctx) => ctx.publish
   }], utils.getListrConfig())
 
-  return releaseChecks(opts).then(() => tasks.run(opts))
+  return releaseChecks(opts).then(validatedOpts => tasks.run(validatedOpts))
 }
 
 module.exports = release
