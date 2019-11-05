@@ -26,25 +26,33 @@ function getContributors () {
   })
 }
 
-function contributors (ctx) {
-  return Promise.all([
+function areNewContributors (pkg, contributors) {
+  if (!pkg.contributors)
+    return true
+
+  return _.difference(contributors, pkg.contributors).length > 0
+}
+
+async function contributors (ctx) {
+  const [pkg, contributors] = await Promise.all([
     fs.readJson(getPathToPkg()),
     getContributors()
-  ]).then((res) => {
-    const pkg = res[0]
-    pkg.contributors = res[1]
+  ])
 
-    return fs.writeJson(getPathToPkg(), pkg, { spaces: 2 })
-  }).then(() => {
-    return pify(git.commit.bind(git))(
-      'chore: update contributors',
-      getPathToPkg(),
-      {
-        '--no-verify': true,
-        '--allow-empty': true
-      }
-    )
-  })
+  if (!areNewContributors(pkg, contributors))
+    return
+
+  pkg.contributors = contributors
+  await fs.writeJson(getPathToPkg(), pkg, { spaces: 2 })
+
+  return pify(git.commit.bind(git))(
+    'chore: update contributors',
+    getPathToPkg(),
+    {
+      '--no-verify': true,
+      '--allow-empty': true
+    }
+  )
 }
 
 module.exports = contributors
