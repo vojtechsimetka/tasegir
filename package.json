@@ -111,6 +111,7 @@
     "nyc": "^14.1.0",
     "p-map": "^3.0.0",
     "pify": "^4.0.1",
+    "precinct": "^6.1.2",
     "pretty-hrtime": "^1.0.3",
     "prompt-promise": "^1.0.3",
     "read-pkg-up": "^6.0.0",
