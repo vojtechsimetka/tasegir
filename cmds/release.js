@@ -28,6 +28,11 @@ module.exports = {
       type: 'boolean',
       default: true
     },
+    commit: {
+      describe: 'Creates chore commit',
+      type: 'boolean',
+      default: true
+    },
     test: {
       describe: 'Run test tasks before release',
       type: 'boolean',

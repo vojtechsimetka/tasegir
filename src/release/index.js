@@ -52,7 +52,8 @@ function release (opts) {
     enabled: (ctx) => ctx.changelog
   }, {
     title: 'Commit to Git',
-    task: commit
+    task: commit,
+    enabled: (ctx) => ctx.commit
   }, {
     title: 'Push to GitHub',
     task: push
