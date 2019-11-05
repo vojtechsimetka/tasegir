@@ -1,6 +1,6 @@
 {
   "name": "tasegir",
-  "version": "20.4.1",
+  "version": "1.0.0",
   "description": "TypeScript JavaScript project management",
   "keywords": [
     "webpack",
@@ -29,15 +29,15 @@
   "repository": "github:auhau/tasegir",
   "scripts": {
     "lint": "node cli.js lint",
-    "test:node": "cross-env TASEGIR_TEST=hello node cli.js test -t node --files 'test/**/*.spec.js'",
+    "test:node": "cross-env TASEGIR_TEST=hello node cli.js test -t node --files 'test/**/*.spec.ts'",
     "test:browser": "cross-env TASEGIR_TEST=hello node cli.js test -t browser webworker --files test/browser.spec.ts",
     "test:acceptance": "./test/acceptance.sh",
     "test": "npm run test:node && npm run test:browser",
     "coverage": "cross-env TASEGIR_TEST=hello node cli.js coverage -t node",
     "watch": "cross-env TASEGIR_TEST=hello node cli.js test -t node --watch",
     "release": "npm run test && node cli.js release --no-build --no-test --no-compile",
-    "release-minor": "npm run test && node cli.js release --no-build --no-test --type minor",
-    "release-major": "npm run test && node cli.js release --no-build --no-test --type major"
+    "release-minor": "npm run test && node cli.js release --no-build --no-compile --no-test --type minor",
+    "release-major": "npm run test && node cli.js release --no-build --no-compile --no-test --type major"
   },
   "dependencies": {
     "@babel/cli": "^7.6.0",
@@ -140,7 +140,8 @@
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
     "cross-env": "^6.0.0",
-    "mock-require": "^3.0.2"
+    "mock-require": "^3.0.2",
+    "sinon": "^7.5.0"
   },
   "engines": {
     "node": ">=10.0.0",
