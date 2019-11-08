@@ -48,8 +48,21 @@ module.exports = {
     'require-await': 2,
     'padding-line-between-statements': [
       'error',
-      { 'blankLine': 'always', 'prev': '*', 'next': 'if'},
-      { 'blankLine': 'always', 'prev': '*', 'next': 'function'},
-    ]
+      { 'blankLine': 'always', 'prev': '*', 'next': 'if' },
+      { 'blankLine': 'always', 'prev': '*', 'next': 'function' },
+    ],
+    'no-useless-constructor': 'off',
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-useless-constructor': 'error',
+    '@typescript-eslint/member-delimiter-style': ['error', {
+      'multiline': {
+        'delimiter': 'none',
+        'requireLast': true
+      },
+      'singleline': {
+        'delimiter': 'comma',
+        'requireLast': false
+      }
+    }]
   }
 }
