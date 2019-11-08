@@ -1,3 +1,13 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/auhau/tasegir/compare/v1.1.0...v1.1.1) (2019-11-08)
+
+
+### Bug Fixes
+
+* eslintrc tweaks ([257e978](https://github.com/auhau/tasegir/commit/257e978))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/auhau/tasegir/compare/v1.0.0...v1.1.0) (2019-11-05)
 
