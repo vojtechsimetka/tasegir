@@ -2,6 +2,8 @@
 
 module.exports = {
   tsconfig: {
-    strict: false
+    compilerOptions: {
+      strict: false
+    }
   }
 }

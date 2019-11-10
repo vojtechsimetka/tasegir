@@ -1,7 +1,7 @@
 'use strict'
 
 const { fromRoot } = require('../src/utils')
-const tsconfig = require('../src/config/tsconfig')
+const tsconfig= require('../src/config/tsconfig')
 const execa = require('execa')
 const path = require('path')
 const globby = require('globby')
@@ -20,16 +20,14 @@ module.exports = {
   },
   async handler (argv) {
     const forwardOptions = argv['--'] ? argv['--'] : []
-    const paths = await globby([fromRoot('src', '**', '*.ts'), fromRoot('src', '*.ts')]);
+    const paths = await globby([fromRoot('src', '**', '*.ts'), fromRoot('src', '*.ts')])
     return execa('tsc', [
       '--noEmit',
-      ...tsconfig(),
+      ...tsconfig.compilerCliOptions(),
       ...forwardOptions,
       ...paths
     ], {
-      stdio: 'inherit',
-      cwd: process.cwd(),
-      localDir: path.join(__dirname, '..')
+      stdio: 'inherit'
     })
   }
 }

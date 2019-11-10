@@ -5,13 +5,13 @@ const path = require('path')
 const fs = require('fs-extra')
 const { hook, fromTasegir } = require('../utils')
 const userConfig = require('../config/user')
+const tsconfig = require('../config/tsconfig.js')
 
 const DEFAULT_TIMEOUT = global.DEFAULT_TIMEOUT || 5 * 1000
 
 function testNode (ctx) {
   let exec = 'mocha'
-  const defaultOptions = fs.readJsonSync(fromTasegir('src', 'config', 'tsconfig.json')).compilerOptions
-  const compilerOptions = Object.assign(defaultOptions, userConfig().tsconfig)
+  const compilerOptions = tsconfig(true).compilerOptions
 
   const env = {
     NODE_ENV: 'test',

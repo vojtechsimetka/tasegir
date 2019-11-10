@@ -20,13 +20,15 @@ module.exports = async function compile (argv) {
 
   const paths = await globby([fromRoot('src', '**', '*.ts'), fromRoot('src', '*.ts')]);
 
-  return execa('tsc', [
+  const args = [
     '--outDir',
     COMPILE_DIR,
-    ...tsconfig(),
+    ...tsconfig.compilerCliOptions(),
     ...forwardOptions,
     ...paths
-  ], {
+  ]
+
+  return execa('tsc', args, {
     stdio: 'inherit',
     cwd: process.cwd(),
     localDir: path.join(__dirname, '..')

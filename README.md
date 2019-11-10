@@ -77,7 +77,7 @@ module.exports = {
   webpack: {}, // webpack.config.js content
   karma: {}, // karma.conf.js content
   hooks: {}, // See Tests -> Hooks
-  tsconfig: {}, // Place for compilersOptions of tsc
+  tsconfig: {}, // Place for tsconfig.json configuration, only compilerOptions are used though.
   entry: utils.fromRoot('src', 'index.ts'), // Entry point 
 }
 ``` 
