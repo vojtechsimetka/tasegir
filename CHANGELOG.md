@@ -1,3 +1,13 @@
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/auhau/tasegir/compare/v1.1.1...v1.1.2) (2019-11-10)
+
+
+### Bug Fixes
+
+* compilerOptions for tests ([82e78af](https://github.com/auhau/tasegir/commit/82e78af))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/auhau/tasegir/compare/v1.1.0...v1.1.1) (2019-11-08)
 
