@@ -1,13 +1,9 @@
 const execa = require('execa')
 const path = require('path')
-const fs = require('fs-extra')
-const { fromTasegir } = require('./utils')
-
-const userConfig = require('./config/user')
+const tsconfig = require('./config/tsconfig.js')
 
 module.exports = function (argv) {
-  const defaultOptions = fs.readJsonSync(fromTasegir('src', 'config', 'tsconfig.json')).compilerOptions
-  const compilerOptions = Object.assign(defaultOptions, userConfig().tsconfig)
+  const compilerOptions = tsconfig(true).compilerOptions
 
   const env = {
     TS_NODE_COMPILER_OPTIONS: JSON.stringify(compilerOptions)
