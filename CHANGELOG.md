@@ -1,3 +1,14 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/auhau/tasegir/compare/v1.1.2...v1.1.3) (2019-11-22)
+
+
+### Bug Fixes
+
+* better eslint rules for tests ([b611999](https://github.com/auhau/tasegir/commit/b611999))
+* types integration for run task ([2249085](https://github.com/auhau/tasegir/commit/2249085))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/auhau/tasegir/compare/v1.1.1...v1.1.2) (2019-11-10)
 
