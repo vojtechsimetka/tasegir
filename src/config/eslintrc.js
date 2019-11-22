@@ -17,35 +17,35 @@ module.exports = {
   ],
   rules: {
     'array-bracket-newline': ['error', { 'multiline': true }],
-    strict: [2, 'safe'],
+    strict: ['error', 'safe'],
     curly: 'error',
-    'block-scoped-var': 2,
-    complexity: 1,
-    'default-case': 2,
-    'dot-notation': 1,
-    'guard-for-in': 1,
-    'linebreak-style': [1, 'unix'],
-    'no-alert': 2,
-    'no-case-declarations': 2,
-    'no-console': 2,
-    'no-constant-condition': 2,
-    'no-continue': 1,
-    'no-div-regex': 2,
-    'no-empty': 1,
-    'no-empty-pattern': 2,
-    'no-extra-semi': 2,
-    'no-implicit-coercion': 2,
-    'no-labels': 2,
-    'no-loop-func': 2,
-    'no-nested-ternary': 1,
-    'no-only-tests/no-only-tests': 2,
-    'no-script-url': 2,
-    'no-warning-comments': 1,
-    'quote-props': [2, 'as-needed'],
-    'require-yield': 2,
-    'max-nested-callbacks': [2, 4],
-    'max-depth': [2, 4],
-    'require-await': 2,
+    'block-scoped-var': 'error',
+    complexity: 'warn',
+    'default-case': 'error',
+    'dot-notation': 'warn',
+    'guard-for-in': 'warn',
+    'linebreak-style': ['warn', 'unix'],
+    'no-alert': 'error',
+    'no-case-declarations': 'error',
+    'no-console': 'error',
+    'no-constant-condition': 'error',
+    'no-continue': 'warn',
+    'no-div-regex': 'error',
+    'no-empty': 'warn',
+    'no-empty-pattern': 'error',
+    'no-extra-semi': 'error',
+    'no-implicit-coercion': 'error',
+    'no-labels': 'error',
+    'no-loop-func': 'error',
+    'no-nested-ternary': 'warn',
+    'no-only-tests/no-only-tests': 'error',
+    'no-script-url': 'error',
+    'no-warning-comments': 'warn',
+    'quote-props': ['error', 'as-needed'],
+    'require-yield': 'error',
+    'max-nested-callbacks': ['error', 4],
+    'max-depth': ['error', 4],
+    'require-await': 'error',
     'padding-line-between-statements': [
       'error',
       { 'blankLine': 'always', 'prev': '*', 'next': 'if' },
@@ -53,6 +53,7 @@ module.exports = {
     ],
     'no-useless-constructor': 'off',
     'no-dupe-class-members': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'warn',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/member-delimiter-style': ['error', {
       'multiline': {
@@ -64,5 +65,14 @@ module.exports = {
         'requireLast': false
       }
     }]
-  }
+  },
+  overrides: [
+    {
+      files: ['*.spec.ts'],
+      rules: {
+        '@typescript-eslint/ban-ts-ignore': 'off',
+        'max-nested-callbacks': ['error', 10] // allow describe/it nesting
+      }
+    }
+  ]
 }
