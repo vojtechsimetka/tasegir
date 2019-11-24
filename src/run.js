@@ -4,6 +4,7 @@ const tsconfig = require('./config/tsconfig.js')
 
 module.exports = function (argv) {
   const compilerOptions = tsconfig(true).compilerOptions
+  const forwardOptions = argv['--'] ? argv['--'] : []
 
   const env = {
     TS_NODE_COMPILER_OPTIONS: JSON.stringify(compilerOptions)
@@ -20,7 +21,7 @@ module.exports = function (argv) {
   args.push(
     '--',
     argv.file,
-    ...argv.args
+    ...forwardOptions
   )
 
   return execa(argv.watch ? 'ts-node-dev' : 'node',

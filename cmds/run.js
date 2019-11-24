@@ -3,7 +3,7 @@
 const run = require('../src/run')
 
 module.exports = {
-  command: 'run <file> [args..]',
+  command: 'run <file>',
   desc: 'Run TypeScript file using Node',
   builder: (yargs) => {
     yargs
@@ -24,7 +24,7 @@ module.exports = {
           default: false
         },
       })
-      .example('npx tasegir run ./src/cli.ts --with="some argument"', 'To pass arguments to the file.')
+      .example('tasegir run ./src/cli.ts -- --with="some argument"', 'To pass arguments to the file.')
   },
   handler (argv) {
     run(argv)

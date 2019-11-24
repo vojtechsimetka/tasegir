@@ -2,9 +2,7 @@
 
 const execa = require('execa')
 const path = require('path')
-const fs = require('fs-extra')
-const { hook, fromTasegir } = require('../utils')
-const userConfig = require('../config/user')
+const { hook } = require('../utils')
 const tsconfig = require('../config/tsconfig.js')
 
 const DEFAULT_TIMEOUT = global.DEFAULT_TIMEOUT || 5 * 1000
