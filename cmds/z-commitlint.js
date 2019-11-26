@@ -2,6 +2,7 @@
 const path = require('path')
 const execa = require('execa')
 const commitlintTravis = require('../src/checks/commitlint-travis')
+const commitlintCircleCi = require('../src/checks/commitlint-circleci')
 
 const EPILOG = `
 Supports options forwarding with '--' for more info check https://conventional-changelog.github.io/commitlint/#/reference-cli
@@ -19,12 +20,19 @@ module.exports = {
         travis: {
           describe: 'Run `commitlint` in Travis CI mode.',
           boolean: true
+        },
+        circleci: {
+          describe: 'Run `commitlint` in CircleCI mode.',
+          boolean: true
         }
       })
   },
   handler (argv) {
     if (argv.travis) {
       return commitlintTravis()
+    }
+    if (argv.circleci) {
+      return commitlintCircleCi()
     }
 
     const input = argv._.slice(1)
