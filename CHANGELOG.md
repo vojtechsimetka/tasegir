@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/auhau/tasegir/compare/v1.1.4...v1.2.0) (2019-11-26)
+
+
+### Features
+
+* commitlint support for CircleCi ([425dcc7](https://github.com/auhau/tasegir/commit/425dcc7))
+
+
+
 <a name="1.1.4"></a>
 ## [1.1.4](https://github.com/auhau/tasegir/compare/v1.1.3...v1.1.4) (2019-11-24)
 
