@@ -1,3 +1,14 @@
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/auhau/tasegir/compare/v1.2.1...v1.2.2) (2019-11-27)
+
+
+### Bug Fixes
+
+* browser test & build working ([2eb589f](https://github.com/auhau/tasegir/commit/2eb589f))
+* circleci commitlint on branch ([1df5d37](https://github.com/auhau/tasegir/commit/1df5d37))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/auhau/tasegir/compare/v1.2.0...v1.2.1) (2019-11-27)
 
