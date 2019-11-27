@@ -1,3 +1,13 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/auhau/tasegir/compare/v1.2.0...v1.2.1) (2019-11-27)
+
+
+### Bug Fixes
+
+* dependency check for TS files ([2a14c05](https://github.com/auhau/tasegir/commit/2a14c05))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/auhau/tasegir/compare/v1.1.4...v1.2.0) (2019-11-26)
 
