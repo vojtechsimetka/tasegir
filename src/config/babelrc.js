@@ -32,6 +32,7 @@ module.exports = function (opts = {}) {
       ]
     ].filter(Boolean),
     plugins: [
+      ['@babel/plugin-proposal-class-properties'],
       [
         require('@babel/plugin-transform-runtime').default,
         {

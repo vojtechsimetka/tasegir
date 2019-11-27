@@ -67,6 +67,7 @@ const base = (env, argv) => {
       ]
     },
     resolve: {
+      extensions: ['.ts', '.js'],
       alias: {
         '@babel/runtime': path.dirname(
           require.resolve('@babel/runtime/package.json')

@@ -27,10 +27,6 @@ const karmaWebpackConfig = merge(webpackConfig({ production: isProduction }), {
   output: {
     libraryTarget: 'var'
   },
-  resolve: {
-    extensions: ['.ts', '.js'],
-    modules: ['../node_modules']
-  },
   plugins: [
     new webpack.DefinePlugin(env)
   ]
@@ -48,7 +44,7 @@ const karmaConfig = (config, argv) => {
   const karmaEntry = `${__dirname}/karma-entry.js`
 
   if (!files.length) {
-    // only try to load *.spec.js if we aren't specifying custom files
+    // only try to load *.spec.ts if we aren't specifying custom files
     files.push(karmaEntry)
   }
 
