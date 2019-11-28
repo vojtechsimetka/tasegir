@@ -1,3 +1,13 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/auhau/tasegir/compare/v1.2.2...v1.3.0) (2019-11-28)
+
+
+### Features
+
+* coverage working for TS ([9090ab2](https://github.com/auhau/tasegir/commit/9090ab2))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/auhau/tasegir/compare/v1.2.1...v1.2.2) (2019-11-27)
 
