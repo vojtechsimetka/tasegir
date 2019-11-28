@@ -2,7 +2,7 @@
 
 const execa = require('execa')
 const path = require('path')
-const { hook } = require('../utils')
+const { hook, fromTasegir } = require('../utils')
 const tsconfig = require('../config/tsconfig.js')
 
 const DEFAULT_TIMEOUT = global.DEFAULT_TIMEOUT || 5 * 1000
@@ -18,12 +18,36 @@ function testNode (ctx) {
   }
   const timeout = ctx.timeout || DEFAULT_TIMEOUT
 
-  let args = [
-    '--require', 'ts-node/register',
-    ctx.progress && '--reporter=progress',
-    '--ui', 'bdd',
-    '--timeout', timeout
-  ].filter(Boolean)
+  let args
+  if(ctx.coverage){
+    exec = 'nyc'
+    args = [
+      `--nycrc-path='./node_modules/tasegir/src/config/.nycrc'`,
+      'mocha',
+      '--compilers ts-node/register',
+      '--require source-map-support/register',
+      '--full-trace',
+    ]
+  }else{
+    args = [
+      '--require', 'ts-node/register',
+      ctx.progress && '--reporter=progress',
+      '--ui', 'bdd',
+      '--timeout', timeout
+    ].filter(Boolean)
+
+    if (ctx['100']) {
+      args = [
+        '--check-coverage',
+        '--branches=100',
+        '--functions=100',
+        '--lines=100',
+        '--statements=100',
+        exec
+      ].concat(args)
+      exec = 'nyc'
+    }
+  }
 
   let files = [
     'test/node.ts',
@@ -64,19 +88,7 @@ function testNode (ctx) {
   const preHook = hook('node', 'pre')
 
   let err
-
-  if (ctx['100']) {
-    args = [
-      '--check-coverage',
-      '--branches=100',
-      '--functions=100',
-      '--lines=100',
-      '--statements=100',
-      exec
-    ].concat(args)
-    exec = 'nyc'
-  }
-
+  
   return preHook(ctx).then(() => {
     return execa(exec, args.concat(files.map((p) => path.normalize(p))), {
       env: env,

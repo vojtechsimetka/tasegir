@@ -84,6 +84,11 @@ module.exports = {
           describe: 'Use progress reporters on mocha and karma',
           type: 'boolean',
           default: false
+        },
+        coverage: {
+          describe: 'Enable coverage tracking and report',
+          type: 'boolean',
+          default: true
         }
       })
   },
