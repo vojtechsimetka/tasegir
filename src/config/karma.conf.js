@@ -53,7 +53,7 @@ const karmaConfig = (config, argv) => {
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: ['--no-sandbox', '--disable-web-security']
       }
     },
     frameworks: isWebworker ? ['mocha-webworker'] : ['mocha'],

@@ -88,7 +88,7 @@ function testNode (ctx) {
   const preHook = hook('node', 'pre')
 
   let err
-  
+
   return preHook(ctx).then(() => {
     return execa(exec, args.concat(files.map((p) => path.normalize(p))), {
       env: env,

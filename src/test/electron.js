@@ -7,7 +7,7 @@ module.exports = (argv) => {
   const input = argv._.slice(1)
   const forwardOptions = argv['--'] ? argv['--'] : []
   const watch = argv.watch ? ['--watch'] : []
-  const files = argv.files.length ? [...argv.files] : ['test/**/*.spec.js']
+  const files = argv.files.length ? [...argv.files] : ['test/**/*.spec.ts']
   const verbose = argv.verbose ? ['--log-level', 'debug'] : ['--log-level', 'error']
   const grep = argv.grep ? ['--grep', argv.grep] : []
   const progress = argv.progress ? ['--reporter=progress'] : []
