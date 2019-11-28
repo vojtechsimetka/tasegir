@@ -1,3 +1,13 @@
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/auhau/tasegir/compare/v1.3.0...v1.3.1) (2019-11-28)
+
+
+### Bug Fixes
+
+* chrome without security ([ed9e3ae](https://github.com/auhau/tasegir/commit/ed9e3ae))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/auhau/tasegir/compare/v1.2.2...v1.3.0) (2019-11-28)
 
