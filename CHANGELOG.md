@@ -1,3 +1,13 @@
+<a name="1.3.2"></a>
+## [1.3.2](https://github.com/auhau/tasegir/compare/v1.3.1...v1.3.2) (2019-11-29)
+
+
+### Bug Fixes
+
+* electron tests ([1a29a6a](https://github.com/auhau/tasegir/commit/1a29a6a))
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/auhau/tasegir/compare/v1.3.0...v1.3.1) (2019-11-28)
 
