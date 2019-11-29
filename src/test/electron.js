@@ -2,6 +2,7 @@
 const path = require('path')
 const execa = require('execa')
 const { hook } = require('../utils')
+const tsconfig = require('../config/tsconfig.js')
 
 module.exports = (argv) => {
   const input = argv._.slice(1)
@@ -14,10 +15,13 @@ module.exports = (argv) => {
   const bail = argv.bail ? ['--bail', argv.bail] : []
   const timeout = argv.timeout ? ['--timeout', argv.bail] : []
   const renderer = argv.renderer ? ['--renderer'] : []
+  const compilerOptions = tsconfig(true).compilerOptions
 
   return hook('browser', 'pre')(argv.userConfig)
     .then(() => {
       return execa('electron-mocha', [
+        '--require', 'ts-node/register',
+        '--ui', 'bdd',
         ...input,
         ...files,
         ...watch,
@@ -33,7 +37,8 @@ module.exports = (argv) => {
         localDir: path.join(__dirname, '../..'),
         stdio: 'inherit',
         env: {
-          TASEGIR_RUNNER: argv.renderer ? 'electron-renderer' : 'electron-main'
+          TASEGIR_RUNNER: argv.renderer ? 'electron-renderer' : 'electron-main',
+          TS_NODE_COMPILER_OPTIONS: JSON.stringify(compilerOptions)
         }
       })
     })
