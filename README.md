@@ -389,7 +389,7 @@ notifications:
 To add a CI badge to your README use :
 
 ```markdown
-[![Travis CI](https://flat.badgen.net/travis/<path_to_your_repo>)](https://travis-ci.com/<path_to_your_repo>)
+[![Travis CI](https://flat.badgen.net/travis/<path_to_your_repo>)](https://travis-ci.com/<path_to_your_repo>) [![Greenkeeper badge](https://badges.greenkeeper.io/AuHau/tasegir.svg)](https://greenkeeper.io/)
 ```
 
 #### Commit linting
