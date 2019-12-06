@@ -10,6 +10,7 @@ const DEFAULT_TIMEOUT = global.DEFAULT_TIMEOUT || 5 * 1000
 function testNode (ctx) {
   let exec = 'mocha'
   const compilerOptions = tsconfig(true).compilerOptions
+  const forwardOptions = ctx['--'] ? ctx['--'] : []
 
   const env = {
     NODE_ENV: 'test',
@@ -88,6 +89,7 @@ function testNode (ctx) {
   const preHook = hook('node', 'pre')
 
   let err
+  args = [...args, ...forwardOptions]
 
   return preHook(ctx).then(() => {
     return execa(exec, args.concat(files.map((p) => path.normalize(p))), {
