@@ -1,3 +1,13 @@
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/auhau/tasegir/compare/v1.3.3...v1.3.4) (2019-12-11)
+
+
+### Bug Fixes
+
+* browser tests in production mode ([76f24d9](https://github.com/auhau/tasegir/commit/76f24d9))
+
+
+
 <a name="1.3.3"></a>
 ## [1.3.3](https://github.com/auhau/tasegir/compare/v1.3.2...v1.3.3) (2019-12-06)
 
