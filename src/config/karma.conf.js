@@ -21,7 +21,14 @@ const env = {
 }
 
 // Webpack overrides for karma
-const karmaWebpackConfig = merge(webpackConfig({ production: isProduction }), {
+let generatedWebpackConfig = webpackConfig({ production: isProduction })
+
+// In production mode multiple bundles is created, we need to test only the main one.
+if(Array.isArray(generatedWebpackConfig)){
+  generatedWebpackConfig = generatedWebpackConfig[0]
+}
+
+const karmaWebpackConfig = merge(generatedWebpackConfig, {
   entry: '',
   devtool: 'inline-source-map',
   output: {
@@ -31,6 +38,7 @@ const karmaWebpackConfig = merge(webpackConfig({ production: isProduction }), {
     new webpack.DefinePlugin(env)
   ]
 })
+
 
 const karmaConfig = (config, argv) => {
   const files = argv.filesCustom
