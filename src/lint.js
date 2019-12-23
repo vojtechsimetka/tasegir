@@ -8,12 +8,17 @@ const formatter = CLIEngine.getFormatter()
 
 const FILES = [
   '*.ts',
+  '*.tsx',
   'bin/**',
   'config/**/*.ts',
+  'config/**/*.tsx',
   'test/**/*.ts',
   'src/**/*.ts',
+  'src/**/*.tsx',
   'tasks/**/*.ts',
+  'tasks/**/*.tsx',
   'benchmarks/**/*.ts',
+  'benchmarks/**/*.tsx',
   '!**/node_modules/**'
 ]
 

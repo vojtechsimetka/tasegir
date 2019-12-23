@@ -77,6 +77,9 @@ module.exports = {
   webpack: {}, // webpack.config.js content
   karma: {}, // karma.conf.js content
   hooks: {}, // See Tests -> Hooks
+  lint: {
+    files: [] // Globby list of paths to lint
+  },
   tsconfig: {}, // Place for tsconfig.json configuration, only compilerOptions are used though.
   entry: utils.fromRoot('src', 'index.ts'), // Entry point 
 }
