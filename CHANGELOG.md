@@ -1,3 +1,13 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/auhau/tasegir/compare/v1.3.4...v1.4.0) (2019-12-23)
+
+
+### Features
+
+* lint support for tsx ([15a4974](https://github.com/auhau/tasegir/commit/15a4974))
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/auhau/tasegir/compare/v1.3.3...v1.3.4) (2019-12-11)
 
