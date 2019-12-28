@@ -37,7 +37,7 @@ cli.env('TASEGIR')
   .group(['help', 'version', 'debug'], 'Global Options:')
   .wrap(cli.terminalWidth())
   .parserConfiguration({ 'populate--': true })
-  // .strict() // this doesnt allow for cross-env TASEGIR_TEST=hello node cli.js test -t node --files 'test/**/*.spec.js' "--bail"
+  .strict()
 
 const args = cli.fail((msg, err, yargs) => {
   if (msg) {
