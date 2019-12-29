@@ -8,6 +8,8 @@
 
 *Fork of [aegir](https://github.com/ipfs/aegir) specializing on TypeScript projects. Thanks [Protocol Labs](https://protocol.ai/) for all the work!* 
 
+**Warning: this project is still in quite active transition phase to support TypeScript. Things might break, please report them!**
+
 ## Lead Maintainer
 
 [Adam Uhlíř](https://github.com/AuHau)
@@ -81,7 +83,8 @@ module.exports = {
     files: [] // Globby list of paths to lint
   },
   depCheck: {
-    ignore: [] // Array of modules to ignore, '*' is supported for globbing
+    files: [], // Globby list of paths to check allowing overriding the default setting
+    ignore: [] // Array of modules to ignore, '*' is supported for globbing. Overrides the default setting.
   },
   tsconfig: {}, // Place for tsconfig.json configuration, only compilerOptions are used though.
   entry: utils.fromRoot('src', 'index.ts'), // Entry point 
@@ -102,10 +105,6 @@ If you use an IDE that has support for the tools used, you can point your IDE to
 Compile task will compile all TypeScript files in `/src` folder into `/lib` folder. It performs type checking as well.
 
 You can watch for changes passing `--watch` flag like: `tasegir compile -- --watch`.
-
-### Types check
-
-When you want to perform just a type check without TypeScript compilation you can run `tasegir types-check`. This step is also part of the CI pipeline.
 
 ### Run
 
@@ -133,6 +132,17 @@ You can run it using
 $ tasegir lint
 $ tasegir lint-package-json
 ```
+### Types check
+
+When you want to perform just a type check without TypeScript compilation you can run `tasegir types-check`. This step is also part of the CI pipeline.
+
+### Dependency check
+
+Dependency check parses code and check if all dependencies used in code are declared in `package.json` and also vice versa
+if all dependencies declared in `package.json` are actually used in the code.
+
+It is quite common to have dependencies that are not used directly in the code in such a case use the [`tasegir`'s config
+file](#configuration) capabilities to ignore out these modules.
 
 ### Testing
 

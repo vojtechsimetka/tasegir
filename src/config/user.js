@@ -75,6 +75,8 @@ function userConfig () {
     webpack: {},
     karma: {},
     hooks: {},
+    lint: {},
+    depCheck: {},
     tsconfig: {},
     entry: utils.fromRoot('src', 'index.ts'),
     bundlesize: {
