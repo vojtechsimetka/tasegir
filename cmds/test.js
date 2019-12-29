@@ -89,6 +89,10 @@ module.exports = {
           describe: 'Enable coverage tracking and report',
           type: 'boolean',
           default: true
+        },
+        reporter: {
+          describe: 'Specify coverage reporter',
+          type: 'string'
         }
       })
   },

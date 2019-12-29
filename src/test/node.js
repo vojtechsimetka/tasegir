@@ -20,16 +20,24 @@ function testNode (ctx) {
   const timeout = ctx.timeout || DEFAULT_TIMEOUT
 
   let args
-  if(ctx.coverage){
+  if (ctx.coverage) {
     exec = 'nyc'
     args = [
+      // TODO: This should be found using fromTasegir(), but currently absolute paths are not allowed.
       `--nycrc-path='./node_modules/tasegir/src/config/.nycrc'`,
+    ]
+
+    if (ctx.reporter) {
+      args.push(`--reporter=${ctx.reporter}`)
+    }
+
+    args.push(
       'mocha',
       '--compilers ts-node/register',
       '--require source-map-support/register',
       '--full-trace',
-    ]
-  }else{
+    )
+  } else {
     args = [
       '--require', 'ts-node/register',
       ctx.progress && '--reporter=progress',
