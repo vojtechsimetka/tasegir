@@ -1,3 +1,13 @@
+<a name="1.5.2"></a>
+## [1.5.2](https://github.com/auhau/tasegir/compare/v1.5.1...v1.5.2) (2019-12-29)
+
+
+### Bug Fixes
+
+* no flatMap ([738af63](https://github.com/auhau/tasegir/commit/738af63))
+
+
+
 <a name="1.5.1"></a>
 ## [1.5.1](https://github.com/auhau/tasegir/compare/v1.5.0...v1.5.1) (2019-12-29)
 
