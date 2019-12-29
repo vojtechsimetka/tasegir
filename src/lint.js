@@ -3,8 +3,14 @@
 const path = require('path')
 const globby = require('globby')
 const { CLIEngine } = require('eslint')
+const execa = require('execa')
+
 const userConfig = require('./config/user')
+const { fromTasegir, fromRoot } = require('./utils')
 const formatter = CLIEngine.getFormatter()
+
+const resolveBin = require('resolve-bin')
+const packageJsonLintBin = resolveBin.sync('npm-package-json-lint', { executable: 'npmPkgJsonLint' })
 
 const FILES = [
   '*.ts',
@@ -107,10 +113,30 @@ function runLinter (opts = {}) {
     })
 }
 
+function packageJsonLinting (argv) {
+  const input = argv._.slice(1)
+  const forwardOptions = argv['--'] ? argv['--'] : []
+  const useBuiltinConfig = !forwardOptions.includes('--configFile')
+  const config = useBuiltinConfig
+    ? ['-c', fromTasegir('src/config/.npmpackagejsonlintrc.json')]
+    : []
+
+  return execa(packageJsonLintBin, [
+    fromRoot('package.json'),
+    ...config,
+    ...input,
+    ...forwardOptions
+  ], {
+    stdio: 'inherit',
+    localDir: path.join(__dirname, '..')
+  })
+}
+
 function lint (opts) {
   return Promise.all([
     runLinter(opts),
-    checkDependencyVersions(opts)
+    checkDependencyVersions(opts),
+    packageJsonLinting(opts)
   ])
 }
 

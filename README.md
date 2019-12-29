@@ -119,7 +119,12 @@ If you need to debug some script you can use node's `--inspect` and `--inspect-b
 
 ### Linting
 
-Linting uses [eslint](http://eslint.org/), [standard](https://github.com/feross/standard), [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
+Linting happens in three phases:
+  - Linting of package.json using [npm-package-json-lint](https://www.npmjs.com/package/npm-package-json-lint)
+  - Checking version number of all dependencies (normal, dev, peer, optional and bundled)
+  - Code linting
+
+Code linting uses [eslint](http://eslint.org/), [standard](https://github.com/feross/standard), [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin)
 with [some custom rules](https://github.com/auhau/tasegir/tree/master/src/config/eslintrc.js) to enforce some more strictness.
 
 You can run it using
