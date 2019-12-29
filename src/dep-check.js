@@ -3,7 +3,7 @@ const userConfig = require('./config/user')
 const path = require('path')
 const execa = require('execa')
 
-const DEFAULT_IGNORE = ['@types/*', 'tasegir']
+const DEFAULT_IGNORE = ['tasegir']
 
 const DEFAULT_INPUTS = [
   'package.json',
@@ -26,8 +26,7 @@ module.exports = function depCheck (argv) {
     ...defaults,
     '--missing',
     '--unused',
-    '--extensions', 'ts:precinct',
-    '--detective', 'precinct',
+    '--extensions', 'ts:detective-typescript',
     ...formattedIgnored,
     ...forwardOptions
   ], {
