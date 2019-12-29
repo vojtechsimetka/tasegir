@@ -20,7 +20,7 @@ module.exports = function depCheck (argv) {
   const defaults = input.length ? input : (config.depCheck && config.depCheck.files ? config.depCheck.files : DEFAULT_INPUTS)
 
   const ignored = (config.depCheck && config.depCheck.ignore) || DEFAULT_IGNORE
-  const formattedIgnored = ignored.flatMap(value => ['--ignore-module', value])
+  const formattedIgnored = ignored.map(value => ['--ignore-module', value]).reduce((previousValue, currentValue) => previousValue.concat(currentValue), [])
 
   return execa('dependency-check', [
     ...defaults,
