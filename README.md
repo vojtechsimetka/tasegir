@@ -80,6 +80,9 @@ module.exports = {
   lint: {
     files: [] // Globby list of paths to lint
   },
+  depCheck: {
+    ignore: [] // Array of modules to ignore, '*' is supported for globbing
+  },
   tsconfig: {}, // Place for tsconfig.json configuration, only compilerOptions are used though.
   entry: utils.fromRoot('src', 'index.ts'), // Entry point 
 }
@@ -211,23 +214,25 @@ module.exports = {
 }
 ```
 
-### Coverage
+#### Coverage
 
-You can run your tests with `nyc` using
+The tests are automatically ran with test coverage support and basic text reporting. If you don't want to ran
+tests with test coverage you can pass `--no-coverage` flag to the `tasegir test` command. The coverage is currently supported
+only on `node` target.
+
+If you want to specify some other `nyc` reporter to be used use `--reporter` flag.
 
 ```bash
-$ npx nyc -s tasegir test -t node
-# to check the report locally 
-$ npx nyc report --reporter=html && open coverage/index.html
-# or just for a text based reporter
-$ npx nyc report
+$ tasegir test -t node --reporter html && open coverage/index.html
 ```
 
-To auto publish coverage reports from Travis to Codecov add this to
+To auto publish coverage reports from Travis to Codecov use this in
 your `.travis.yml` file.
 
 ```yml
-after_success: npx nyc report --reporter=text-lcov > coverage.lcov && npx codecov
+
+script: npx tasegir test -t node --reporter lcovonly -- --bail
+after_success: npx codecov
 ```
 
 ### Building
@@ -350,8 +355,8 @@ os:
   - osx
   - windows
 
-script: npx nyc -s npm run test:node -- --bail
-after_success: npx nyc report --reporter=text-lcov > coverage.lcov && npx codecov
+script: npx tasegir test -t node --reporter lcovonly -- --bail
+after_success: npx codecov
 
 jobs:
   include:
