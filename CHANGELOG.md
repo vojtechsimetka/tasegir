@@ -1,3 +1,16 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/auhau/tasegir/compare/v1.4.0...v1.5.0) (2019-12-29)
+
+
+### Features
+
+* adding reporter option for test coverage ([f7de593](https://github.com/auhau/tasegir/commit/f7de593))
+* cli strict parse mode to detect unkown arguments ([607e752](https://github.com/auhau/tasegir/commit/607e752))
+* improve dep-check with adding configuration possibility and ignore capability ([197890f](https://github.com/auhau/tasegir/commit/197890f))
+* merging lint-package-json command into lint command ([edafc96](https://github.com/auhau/tasegir/commit/edafc96))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/auhau/tasegir/compare/v1.3.4...v1.4.0) (2019-12-23)
 
