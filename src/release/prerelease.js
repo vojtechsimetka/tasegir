@@ -3,6 +3,8 @@
 const git = require('simple-git')(process.cwd())
 const pify = require('pify')
 const inquirer = require('inquirer')
+const execa = require('execa')
+const globalConfig = require('../config/global')
 
 const GHTOKEN_QUESTION = [
   {
@@ -14,13 +16,40 @@ const GHTOKEN_QUESTION = [
   }
 ]
 
+async function evaluateGhtoken (value) {
+  if (typeof value === 'function') {
+    return await value()
+  }
+
+  if (typeof value !== 'string') {
+    throw new TypeError('Unknown type of release.ghtoken property.')
+  }
+
+  if (!value.startsWith('shell:')) {
+    return value
+  }
+
+  const cmd = value.replace('shell:', '')
+  const result = await execa(cmd, [], {
+    shell: true,
+  })
+
+  return result.stdout
+}
+
 // Check if there are valid GitHub credentials for publishing this module
 async function validGh (opts) {
   if (!opts.ghrelease || opts.ghtoken) {
     return opts
   }
 
-  opts.ghtoken = (await inquirer.prompt(GHTOKEN_QUESTION))['ghtoken']
+  const config = globalConfig()
+  if (config.release.ghtoken) {
+    opts.ghtoken = await evaluateGhtoken(config.release.ghtoken)
+  } else {
+    opts.ghtoken = (await inquirer.prompt(GHTOKEN_QUESTION))['ghtoken']
+  }
+
   return opts
 }
 

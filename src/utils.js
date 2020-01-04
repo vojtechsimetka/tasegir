@@ -13,6 +13,7 @@ const arrify = require('arrify')
 const _ = require('lodash')
 const VerboseRenderer = require('listr-verbose-renderer')
 const execa = require('execa')
+const os = require('os')
 
 const { package: pkg, path: pkgPath } = readPkgUp.sync({
   cwd: fs.realpathSync(process.cwd())
@@ -78,6 +79,28 @@ exports.getUserConfig = () => {
   let conf = {}
   try {
     const path = exports.getUserConfigPath()
+    if (!path) return null
+    conf = require(path)
+  } catch (err) {
+    console.error(err) // eslint-disable-line no-console
+  }
+  return conf
+}
+
+/**
+ * @returns {string}
+ */
+exports.getGlobalConfigPath = () => {
+  return process.env.TASEGIR_CONFIG || path.join(os.homedir(), '.tasegir.js')
+}
+
+/**
+ * @returns {Object}
+ */
+exports.getGlobalConfig = () => {
+  let conf = {}
+  try {
+    const path = exports.getGlobalConfigPath()
     if (!path) return null
     conf = require(path)
   } catch (err) {
