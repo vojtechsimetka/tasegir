@@ -22,6 +22,11 @@ function release (opts) {
   // enable publishing for docs
   opts.publish = true
 
+  // if nothing is set we want to release production ready code!
+  if(process.env.NODE_ENV === undefined || process.env.NODE_ENV === null){
+    process.env.NODE_ENV = 'production'
+  }
+
   const tasks = new Listr([{
     title: 'Lint',
     task: lint,
