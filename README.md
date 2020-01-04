@@ -70,6 +70,8 @@ As TypeScript needs to be compiled to run, there are several options how to do t
 
 ## Configuration
 
+### Local configuration
+
 It is possible to overload the default configuration of most tools that `tasegir` integrates. You can do so by creating
 a `.tasegir.js` file in the root of the project. It has to export an object with this schema:
 
@@ -90,6 +92,25 @@ module.exports = {
   entry: utils.fromRoot('src', 'index.ts'), // Entry point 
 }
 ``` 
+
+### Global configuration
+
+You can use global configuration for some aspects of `tasegir`. Similalrly to local configuration it is file `.tasegir.js`
+placed in your home folder (eq. `~/.tasegir.js`). This location can be customized using `TASEGIR_CONFIG` env. variable.
+
+```javascript
+module.exports = {
+    release: {
+        ghtoken: 'token'
+    }
+}
+``` 
+
+Currently only supported option is `release.ghtoken`. It is used for configuration Github Token needed for creating releases using `tasegir release` command. 
+It has following possible values:
+ - `function` returning `Promise<string>` with ghtoken
+ - `string` starting with `shell:` prefix. In such case remaining of the string will be executed as shell command and its `stdout` used as the token.
+ - `string` *not* starting with `shell:`. The string will be used as the token.
 
 ## IDE support
 
@@ -319,7 +340,7 @@ $ tasegir release --type prepatch --preid rc --dist-tag next
 $ tasegir release --type prerelease --preid rc --dist-tag next
 ```
 
-> This requires `TASEGIR_GHTOKEN` to be set.
+> This requires Github Token to be available.
 
 You can also specify the same targets as for `test`.
 
@@ -332,11 +353,22 @@ If you want no documentation generation you can pass `--no-docs` to the release 
 
 #### Scoped Github Token
 
-Performing a release involves creating new commits and tags and then pushing them back to the repository you are releasing from. In order to do this you should create a [GitHub personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) and store it in the environmental variable `TASEGIR_GHTOKEN`.   
-
+Performing a release involves creating new commits and tags and then pushing them back to the repository you are releasing from. 
+In order to do this you should create a [GitHub personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 The only access scope it needs is `public_repo`.
 
-Be aware that by storing it in `~/.profile` or similar you will make it available to any program that runs on your computer.
+There are several options how you can store it and/or pass it to `tasegir`:
+
+ 1. Pass it using `--ghtoken` parameter of `tasegir release` command. **Do this only in "private" mode of your shell, otherwise token will be stored in your shell's history files and retrievable by potentially malicious programs.**
+ 1. Pass it using `TASEGIR_GHTOKEN` env. variable. **Same warning applies here as in previous option.**
+ 1. If `tasegir` won't find any token using methods in this list, it will prompt for you to enter it.
+ 1. Using [global configuration](#global-configuration) setting `release.ghtoken` property. See [global configuration](#global-configuration) for more info.
+ 
+**Recommendation:** If security is your priority I recommend you to encrypt the token using PGP like `gpg --encrypt --recipient {YOUR_KEY_ID} ~/.ghtoken`
+which results in encrypted `~/.ghtoken.gpg`, you can then remove the original file. Then in [global configuration](#global-configuration)
+use `shell:gpg -q --decrypt ~/.ghtoken.gpg` to automatically decrypt it using PGP every time it is needed. 
+
+Be aware that by storing it as `TASEGIR_GHTOKEN` env. variable in `~/.profile` or similar you will make it available to any program that runs on your computer.
 
 ### Documentation
 
