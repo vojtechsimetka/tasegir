@@ -40,6 +40,7 @@ module.exports = {
     'no-nested-ternary': 'warn',
     'no-only-tests/no-only-tests': 'error',
     'no-script-url': 'error',
+    'no-shadow': 'error',
     'no-warning-comments': 'warn',
     'quote-props': ['error', 'as-needed'],
     'require-yield': 'error',
