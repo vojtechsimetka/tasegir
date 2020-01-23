@@ -86,6 +86,7 @@ const karmaConfig = (config, argv) => {
     }, {}),
 
     client: {
+      captureConsole: true,
       mocha,
       mochaWebWorker: {
         pattern: [
